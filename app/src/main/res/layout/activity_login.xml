@@ -107,7 +107,7 @@
         <com.google.android.gms.common.SignInButton
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="18dp"
             android:layout_below="@id/forgotPassword"
             android:layout_centerHorizontal="true" />
 

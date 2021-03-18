@@ -16,7 +16,7 @@
             android:id="@+id/topView"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:background="#ff5500" />
+            android:background="@color/purple_700" />
 
         <View
             android:id="@+id/view2"
@@ -102,7 +102,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/forgot_pass"
             android:layout_centerHorizontal="true"
-            android:textColor="#ff5500"
+            android:textColor="@color/purple_700"
             android:textSize="15sp"
             android:textStyle="bold" />
 

@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Quiz Game</string>
+    <string name="input_username">Kullanıcı Adı</string>
     <string name="input_email">E-posta</string>
     <string name="input_password">Şifre</string>
+    <string name="repeat_password">Şifre Tekrar</string>
     <string name="login">Giriş Yap</string>
+    <string name="register">Kayıt Ol</string>
     <string name="dont_have_account">Hesabın yok mu?</string>
+    <string name="already_member">Hesabın var mı?</string>
     <string name="signup">Kaydol</string>
     <string name="or">YA DA</string>
     <string name="forgot_pass">Şifremi Unuttum</string>

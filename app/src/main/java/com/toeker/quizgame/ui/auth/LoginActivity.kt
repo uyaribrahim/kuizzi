@@ -1,7 +1,8 @@
-package com.toeker.quizgame
+package com.toeker.quizgame.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.toeker.quizgame.R
 
 class LoginActivity : AppCompatActivity() {
 

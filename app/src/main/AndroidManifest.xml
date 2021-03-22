@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizGame">
         <activity android:name=".ui.auth.SignupActivity"></activity>
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ui.home.HomeActivity"></activity>
         <activity android:name=".ui.auth.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

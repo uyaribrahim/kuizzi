@@ -1,6 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/addquestiondialog"
+    android:gravity="center">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp"></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/lastText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Soru:"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+        <EditText
+            android:id="@+id/editTextSoru"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/layer_list"
+            android:gravity="top"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="5dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp">
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp">
+
+            <RadioButton
+                android:id="@+id/checkBox"
+                android:layout_width="14dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="A"/>
+
+            <EditText
+                android:id="@+id/optA"
+                android:layout_width="195dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp">
+
+            <RadioButton
+                android:id="@+id/checkBox2"
+                android:layout_width="14dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="B"/>
+
+            <EditText
+                android:id="@+id/optB"
+                android:layout_width="195dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp">
+
+            <RadioButton
+                android:id="@+id/checkBox3"
+                android:layout_width="14dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="C"/>
+
+            <EditText
+                android:id="@+id/optC"
+                android:layout_width="195dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp">
+
+            <RadioButton
+                android:id="@+id/checkBox4"
+                android:layout_width="14dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="D"/>
+
+            <EditText
+                android:id="@+id/optD"
+                android:layout_width="195dp"
+                android:layout_height="30dp"
+                android:background="@color/white" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+        </View>
+
+        <Button
+            android:id="@+id/btnEkle"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:text="EKLE"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:background="@drawable/round_bg"/>
+        <Button
+            android:id="@+id/btnKapat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:text="X"
+            android:textSize="18sp"
+            android:textColor="#FF0000"
+            android:layout_gravity="center"
+            android:background="@drawable/round_bg"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

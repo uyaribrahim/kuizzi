@@ -1,60 +1,132 @@
 package com.toeker.quizgame.ui.fragments
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
+import androidx.viewpager.widget.ViewPager
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.toeker.quizgame.R
+import com.toeker.quizgame.data.models.QuizModel2
+import com.toeker.quizgame.ui.QuizViewModel
+import com.toeker.quizgame.ui.adapters.QuizAdapter
+import com.toeker.quizgame.utils.OnDataAdded
+import kotlinx.android.synthetic.main.fragment_home.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+@Suppress("DEPRECATION")
+class HomeFragment : Fragment(), OnDataAdded  {
+
+    private lateinit var quizAdapter: QuizAdapter
+    private var arrayList: ArrayList<QuizModel2>? = ArrayList()
+    private lateinit var quizViewModel: QuizViewModel
+
+    private val reference = Firebase.firestore.collection("quiz")
+
+    var progressStatus = 0;
+    lateinit var progressBar: ProgressBar
+    val handler: Handler = Handler()
+
+    private val database by lazy{
+        FirebaseFirestore.getInstance()
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        progressBar = view.findViewById(R.id.progressBar)
+
+        getData()
+        realTimeUpdates()
+
+        }
+    fun getData(){
+        quizViewModel = ViewModelProviders.of(requireActivity()).get(QuizViewModel::class.java)
+
+        if(quizViewModel.getQuiz()?.getValue()?.size == 0){
+            Thread(Runnable {
+
+                while (quizViewModel.getQuiz()?.getValue()?.size == 0) {
+                    progressStatus += 1
+
+                    try {
+                        Thread.sleep(200)
+                    } catch (e: InterruptedException) {
+                        e.printStackTrace()
+                    }
+
+                    handler.post(Runnable {
+                        progressBar.progress = progressStatus
+                        if(quizViewModel.getQuiz()?.getValue()?.size != 0){
+
+                            Log.e("TAG", "ValueList : " + arrayList?.size)
+
+                            setViewPager()
+
+                            progressBar.visibility = View.INVISIBLE
+
+                            //Log.e("TAG", "Fragment")
+                        }
+                    })
+                }
+            }).start()
+        }else{
+            Log.e("########", quizViewModel.getQuiz()?.getValue()?.size.toString())
+            setViewPager()
+            progressBar.visibility = View.INVISIBLE
         }
     }
+    fun realTimeUpdates(){
 
+        reference.addSnapshotListener { querySnapshot, exception ->
+
+            exception?.let {
+                Toast.makeText(context,it.message,Toast.LENGTH_SHORT).show()
+                return@addSnapshotListener
+            }
+            querySnapshot?.let {
+                    quizViewModel.realTime(requireActivity())
+            }
+        }
+    }
+    fun setViewPager(){
+        quizAdapter = quizViewModel?.getQuiz()?.getValue()?.let {
+            context?.let { it1 ->
+                QuizAdapter(
+                    it1, it)
+            }
+        }!!
+        viewPager.adapter = quizAdapter
+        viewPager2.adapter = quizAdapter
+
+        viewPager2.setPadding(120,0,120,0)
+        viewPager.setPadding(120, 0, 120, 0)
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view =  inflater.inflate(R.layout.fragment_home, container, false)
+
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun added() {
+        quizAdapter.notifyDataSetChanged()
     }
 }

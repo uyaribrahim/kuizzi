@@ -1,15 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.CreateQuizFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="QUIZ OLUŞTUR" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@drawable/layer_list">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="245dp"
+                    android:layout_marginEnd="18.5dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/comingsansfreetrial"
+                    android:gravity="center"
+                    android:text="Quiz Olustur"
+                    android:layout_gravity="center"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/btnKaydet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kaydet"
+                    android:textSize="16sp"
+                    android:layout_gravity="right|center"
+                    android:layout_margin="15dp"
+                    android:fontFamily="@font/comingsansfreetrial"
+                    />
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/viewAddImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/layer_list"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="resim eklemek için dokunun"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:id="@+id/quizImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                />
+
+            <ProgressBar
+                android:id="@+id/createQuizProgress"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"/>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Başlık"
+            android:paddingStart="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/editTxtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/layer_list"
+            android:hint="Başlık girin"
+            android:maxLines="1"
+            android:paddingStart="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Açıklama"
+            android:paddingStart="15dp"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/editTxtDesc"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/layer_list"
+            android:hint="Açıklama girin"
+            android:maxLines="3"
+            android:paddingStart="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Görünürlük"
+            android:paddingStart="15dp"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/layer_list"
+            >
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="3dp"
+                android:layout_marginTop="1dp"
+                />
+            <TextView
+                android:id="@+id/txtPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"
+                android:text="PIN: "/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSoruEkle"
+            android:layout_width="122dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Soru Ekle"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/round_bg"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycSorular"
+            android:layout_width="match_parent"
+            android:layout_height="105dp" />
+
+    </LinearLayout>
+    </ScrollView>
+
+
 
 </FrameLayout>

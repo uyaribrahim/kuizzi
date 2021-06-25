@@ -1,24 +1,52 @@
 package com.toeker.quizgame.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.navigation.NavController
+import android.util.Log
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.toeker.quizgame.R
+import com.toeker.quizgame.ui.QuizViewModel
+import com.toeker.quizgame.utils.OnDataAdded
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+
+@Suppress("DEPRECATION")
+class HomeActivity : AppCompatActivity(), OnDataAdded {
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val navController = findNavController(R.id.fragment)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.searchFragment, R.id.createQuizFragment,R.id.profileFragment))
-        // setupActionBarWithNavController(navController, appBarConfiguration)
+        var quizViewModel: QuizViewModel = ViewModelProviders.of(this).get(QuizViewModel::class.java)
+        quizViewModel.init(this)
 
-        bottomNavView.setupWithNavController(navController)
+        val navController = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
+        //val appBarConfiguration = AppBarConfiguration(setOf(R.id.homeFragment, R.id.searchFragment, R.id.createQuizFragment,R.id.profileFragment))
+        // setupActionBarWithNavController(navController, appBarConfiguration
+
+        bottomNavView.setupWithNavController(navController.navController)
+
+        /*logout.setOnClickListener(View.OnClickListener {
+
+            mGoogleSignInClient.signOut().addOnCompleteListener{
+                val intent = Intent(this,LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        })*/
     }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+    }
+    override fun added() {
+    }
+
 }

@@ -11,5 +11,6 @@
     <string name="signup">Kaydol</string>
     <string name="or">YA DA</string>
     <string name="forgot_pass">Şifremi Unuttum</string>
+    <string name="web_client_id">your-client-id</string>
 
 </resources>

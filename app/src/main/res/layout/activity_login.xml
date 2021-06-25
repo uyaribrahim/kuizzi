@@ -6,33 +6,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.auth.LoginActivity">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="0.3">
-
         <View
             android:id="@+id/topView"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:background="@color/purple_700" />
-
         <View
             android:id="@+id/view2"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_below="@id/topView"
             android:background="@drawable/ic_wave__2_" />
-
     </RelativeLayout>
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="0px"
         android:gravity="center"
         android:layout_weight="0.7">
-
             <EditText
                 android:id="@+id/inputEmail"
                 android:layout_width="match_parent"
@@ -47,13 +41,12 @@
                 android:hint="@string/input_email"
                 android:padding="16dp"
                 android:importantForAutofill="no" />
-
             <EditText
                 android:id="@+id/inputPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/inputEmail"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginTop="16dp"
@@ -64,7 +57,6 @@
                 android:hint="@string/input_password"
                 android:padding="16dp"
                 android:autofillHints="" />
-
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
@@ -80,20 +72,6 @@
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-<!--        <Button-->
-<!--            android:id="@+id/btnRegister"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:layout_below="@id/btnLogin"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginStart="24dp"-->
-<!--            android:layout_marginEnd="24dp"-->
-<!--            android:background="@drawable/round_bg"-->
-<!--            android:text="REGISTER"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="18sp"-->
-<!--            android:textStyle="bold" />-->
         <TextView
             android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
@@ -105,7 +83,6 @@
             android:textColor="@color/purple_700"
             android:textSize="15sp"
             android:textStyle="bold" />
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
@@ -113,7 +90,6 @@
             android:layout_marginTop="24dp"
             android:layout_below="@id/forgotPassword"
             android:layout_centerHorizontal="true">
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -127,9 +103,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/purple_700"
                 android:text="@string/signup" />
-
         </LinearLayout>
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -139,7 +113,6 @@
             android:layout_marginTop="20dp"
             android:textStyle="bold"
             android:text="@string/or" />
-
         <com.google.android.gms.common.SignInButton
             android:id="@+id/signInButton"
             android:layout_width="175dp"
@@ -147,9 +120,5 @@
             android:layout_marginTop="15dp"
             android:layout_below="@id/textView2"
             android:layout_centerHorizontal="true" />
-
-
     </RelativeLayout>
-
-
 </LinearLayout>

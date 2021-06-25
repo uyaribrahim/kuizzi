@@ -3,13 +3,106 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.HomeFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="@drawable/layer_list">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginEnd="18.5dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/comingsansfreetrial"
+            android:gravity="center"
+            android:text="ibrhmuyar"
+            android:textSize="19sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D9D9D9">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/topPicks"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:padding="10dp"
+                android:drawableStart="@drawable/search_32"
+                android:drawablePadding="6dp"
+                android:textStyle="bold"
+                android:background="@drawable/rect_border"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:text="Popüler"/>
+
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:background="#D9D9D9">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                style="@style/TextAppearance.AppCompat.Small.Inverse"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:foregroundGravity="center"
+                android:overScrollMode="never"/>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <TextView
+            android:id="@+id/myQuizzes"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:padding="10dp"
+            android:drawableStart="@drawable/search_32"
+            android:drawablePadding="6dp"
+            android:textStyle="bold"
+            android:background="@drawable/rect_border"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="Daha Sonra Çöz"/>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:background="#D9D9D9">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="270dp"
+                android:clipToPadding="false"
+                android:foregroundGravity="center"
+                android:overScrollMode="never"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="ANASAYFA" />
 
 </FrameLayout>
